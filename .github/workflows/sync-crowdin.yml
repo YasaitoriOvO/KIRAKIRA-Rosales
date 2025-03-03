@@ -30,3 +30,23 @@ jobs:
       env:
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
         CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+
+    - name: Commit and push translations
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git checkout -B translations
+        git add .
+        git commit -m "🌐 更新翻译" || echo "No changes to commit"
+        git push --force origin translations
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: translations
+        base: develop
+        title: "🌐 更新翻译"
+        body: "由 GitHub Actions 自动生成的翻译更新 PR。"
+        labels: "translation, automated"
+        assignees: "github-actions[bot]"
