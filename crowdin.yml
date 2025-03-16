@@ -1,3 +1,5 @@
+preserve_hierarchy: true
+
 files:
   - source: /src/locales/English.ts
     translation: /src/locales/%language%.ts
