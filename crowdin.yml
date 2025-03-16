@@ -1,4 +1,5 @@
-base_path: /Kirakira-Rosales/locales/
 files:
   - source: src/locales/English.ts
     translation: src/locales/%language%.ts
+    dest: /Kirakira-Rosales/locales/
+    preserve_hierarchy: true
