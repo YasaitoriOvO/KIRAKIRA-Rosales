@@ -7,7 +7,7 @@ on:
       - develop
     paths:
       - src/locales/English.ts
-
+      
 jobs:
   Sync:
     runs-on: ubuntu-latest
@@ -39,11 +39,6 @@ jobs:
         git pull origin develop
         git checkout -b translations
 
-    - name: Ensure correct directory structure
-      run: |
-        mkdir -p Kirakira-Rosales/locales
-        mv src/locales/English.ts Kirakira-Rosales/locales/English.ts
-
     - name: Upload source files to Crowdin
       run: crowdin upload sources --token ${{ secrets.CROWDIN_PERSONAL_TOKEN }} --project-id ${{ secrets.CROWDIN_PROJECT_ID }} -c crowdin.yml
       env:
@@ -70,6 +65,7 @@ jobs:
         echo "### 本次更新的翻译文件：" > pr_body.txt
         git diff --name-only develop translations >> pr_body.txt
         echo "" >> pr_body.txt
+
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v5
