@@ -40,7 +40,7 @@ jobs:
         git checkout -b translations
 
     - name: Upload source files to Crowdin
-      run: crowdin upload sources --files src/locales/English.ts --dest /Kirakira-Rosales/locales/English.ts --token ${{ secrets.CROWDIN_PERSONAL_TOKEN }} --project-id ${{ secrets.CROWDIN_PROJECT_ID }} -c crowdin.yml
+      run: crowdin upload sources --token ${{ secrets.CROWDIN_PERSONAL_TOKEN }} --project-id ${{ secrets.CROWDIN_PROJECT_ID }} --files src/locales/English.ts --dest /Kirakira-Rosales/locales/English.ts -c crowdin.yml
       env:
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
         CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
