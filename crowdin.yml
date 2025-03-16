@@ -1,5 +1,3 @@
 files:
   - source: src/locales/English.ts
-    translation: Kirakira-Rosales/locales/%language%.ts
-    dest: /Kirakira-Rosales/locales/
-    preserve_hierarchy: true
+    translation: src/locales/%language%.ts
